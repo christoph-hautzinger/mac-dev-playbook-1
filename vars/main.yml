@@ -14,10 +14,10 @@ homebrew_installed_packages:
   - php-code-sniffer
   - php-cs-fixer
   - phpunit
-  - php70
-  - php70-intl
-  - php70-imagick
-  - php70-mcrypt
+  - php72
+  - php72-intl
+  - php72-imagick
+  - php72-mcrypt
   - tree
   - npm
   - yarn
@@ -38,12 +38,7 @@ homebrew_cask_apps:
   - vagrant
   - virtualbox
   - phpstorm
-  - slack
-  - istat-menus
-  - atom
   - android-file-transfer
-  - spotify
-  - hipchat
 
 dockitems_to_remove:
   - Launchpad
@@ -58,10 +53,7 @@ dockitems_to_remove:
   - FaceTime
   - iTunes
   - iBooks
-  - App Store
-  - System Preferences
   - Calendar
-  - Siri
 
 dockitems_to_persist:
   - name: Google Chrome
@@ -73,9 +65,6 @@ dockitems_to_persist:
   - name: PhpStorm
     path: /Applications/PhpStorm.app
     pos: 3
-  - name: Slack
-    path: /Applications/Slack.app
-    pos: 4
   - name: VirtualBox
     path: /Applications/VirtualBox.app
     pos: 5
@@ -85,9 +74,6 @@ dockitems_to_persist:
   - name: Spotify
     path: /Applications/Spotify.app
     pos: 7
-  - name: HipChat
-    path: /Applications/HipChat.app
-    pos: 8
 
 
 npm_packages:
@@ -97,3 +83,4 @@ npm_packages:
   - webpack
   - yo
   - generator-webapp
+  - create-react-app

@@ -1,6 +1,6 @@
 ---
 - name: Clone dotfiles
-  git: repo=https://github.com/ricbra/dotfiles.git dest=/Users/richard/dotfiles recursive=yes update=no
+  git: repo=https://github.com/ricbra/dotfiles.git dest=/Users/christophhautzinger/dotfiles recursive=yes update=no
 
 - name: Get current Terminal profile.
   shell: defaults read com.apple.Terminal 'Default Window Settings'
@@ -24,16 +24,16 @@
   shell: defaults write com.apple.Terminal 'Shell' -string '/bin/zsh'
 
 - name: check if gvm is installed
-  shell: test -d /Users/richard/.gvm && echo "yes" || echo "no"
+  shell: test -d /Users/christophhautzinger/.gvm && echo "yes" || echo "no"
   register: is_gvm_installed
 
 - name: download gvm
   when: is_gvm_installed.stdout == "no"
-  get_url: url=https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer dest=/Users/richard/gvm_install.sh
+  get_url: url=https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer dest=/Users/christophhautzinger/gvm_install.sh
 
 - name: install gvm
   when: is_gvm_installed.stdout == "no"
-  command: bash /Users/richard/gvm_install.sh
+  command: bash /Users/christophhautzinger/gvm_install.sh
 
 - name: Remove all crap from Dock
   shell: dockutil --remove '{{ item }}'
@@ -48,19 +48,8 @@
   shell: dockutil --move '{{ item.name }}' --position {{ item.pos }}
   with_items: "{{ dockitems_to_persist }}"
 
-- name: Check if symfony is installed
-  stat: path=/usr/local/bin/symfony
-  register: sf
-
-- name: Download symfony installer
-  get_url: url=http://symfony.com/installer dest=/usr/local/bin/symfony
-  when: sf.stat.exists == false
-
-- name: Set permissions on symfony
-  file: path=/usr/local/bin/symfony mode=0755
-
 - name: Set datetime zone
-  lineinfile: dest=/usr/local/etc/php/7.0/php.ini line="date.timezone=Europe/Amsterdam"
+  lineinfile: dest=/usr/local/etc/php/7.2/php.ini line="date.timezone=Europe/Berlin"
 
 - name: Install npm packages
   npm:  name={{ item }} global=yes
